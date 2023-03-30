@@ -1,0 +1,37 @@
+public class SQLQueryBuilderImpl implements SQLQueryBuilder{
+  
+        List<String> getTables() {
+        //как мы можем извлечь имена всех существующих пользовательских таблиц:
+        //Здесь соединение является экземпляром JdbcConnection. 
+        DatabaseMetaData databaseMetaData = connection.getMetaData();
+        List<String> list = ArrayList<>();
+      try(ResultSet resultSet = databaseMetaData.getTables(null, null, null, new String[]{"TABLE"})){ 
+          while(resultSet.next()) { 
+                String tableName = resultSet.getString("TABLE_NAME"); 
+                list.add(tableName);
+          }
+          return list;
+     }
+      
+      String queryForTable(String tableName) {
+      //Мы также можем извлекать столбцы конкретной таблицы
+      StringBuilder sb = new StringBuilder();
+      try(ResultSet columns = databaseMetaData.getColumns(null,null, "CUSTOMER_ADDRESS", null)){
+         while(columns.next()) {
+              String columnName = columns.getString("COLUMN_NAME");
+              sb = sb + ", " + columnName ", " + ;
+          }          
+       }
+       catch(Exception e) {
+          return null;
+       }
+      //“SELECT <col1>, <col2>, <col3> FROM <tablename>” 
+      //SELECT id, first_name, last_name, middle_name FROM person
+
+      return "SELECT " + sb.toString() + " FROM " + person";
+    }
+   
+}
+
+
+
