@@ -1,3 +1,4 @@
+2task
 public class SQLQueryBuilderImpl implements SQLQueryBuilder{
   
         List<String> getTables() {
@@ -16,15 +17,19 @@ public class SQLQueryBuilderImpl implements SQLQueryBuilder{
       String queryForTable(String tableName) {
       //Мы также можем извлекать столбцы конкретной таблицы
       StringBuilder sb = new StringBuilder();
-      try(ResultSet columns = databaseMetaData.getColumns(null,null, "CUSTOMER_ADDRESS", null)){
+      if(tableExists(connection, tableName)) {
+        try(ResultSet columns = databaseMetaData.getColumns(null,null, "CUSTOMER_ADDRESS", null)){
          while(columns.next()) {
               String columnName = columns.getString("COLUMN_NAME");
               sb = sb + ", " + columnName ", " + ;
           }          
        }
-       catch(Exception e) {
-          return null;
-       }
+      }
+      else {
+        return null;
+      }
+      
+      
       //“SELECT <col1>, <col2>, <col3> FROM <tablename>” 
       //SELECT id, first_name, last_name, middle_name FROM person
 
@@ -33,5 +38,25 @@ public class SQLQueryBuilderImpl implements SQLQueryBuilder{
    
 }
 
+3task
+/////////MessageFilter = component, ConnectionFactory,DataSource = component & dependencies
+public class MessageFilterTest {
+  public static void main(String[] args) throws Exception {
+    Scanner scanner = new Scanner(System.in);
+    MessageFilter messageFilter = getBean//??????
+    
+    System.out.print("Введите сообщение: ");
+    String message = scanner.next();
+    System.out.println(messageFilter.check(message));
+    scanner.close();
+  }
+}
 
+//Проверка, существует ли таблица с помощью DatabaseMetaData
+boolean tableExists(Connection connection, String tableName) throws SQLException {
+    DatabaseMetaData meta = connection.getMetaData();
+    ResultSet resultSet = meta.getTables(null, null, tableName.toUpperCase(), new String[] {"TABLE"});
+
+    return resultSet.next();
+}
 
