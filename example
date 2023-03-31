@@ -1,13 +1,70 @@
-<!-- Maven -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-context</artifactId>
-    <version>5.2.3.RELEASE</version>
-</dependency>
+1. Maven/архетип webApp(для MVC)/
+
+2. Dependencies
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>5.1.4.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>5.1.4.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.1.4.RELEASE</version>
+    </dependency>
+
+3. Папка resources создается в main, помечается (mark directoty as) как resources root// файлы из папки будут доступны классам, здесь будет файл конфигурации applicationContext.xml
+4. Папка java помечается как sources root
+5. Типичные шаги в работе со Spring: 
+создаем java-классы, 
+создаем и связываем бины(xml, 
+аннотации или java код), 
+при использовании берем бины из контейнера
+
+6. public class TestBean {
+    private String name;
+
+    public TestBean(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+//класс тестирует Spring
+public class TestSpring {
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+                "applicationContext.xml"
+        );
+
+        TestBean testBean = context.getBean("testBean", TestBean.class);
+
+        System.out.println(testBean.getName());
+
+        context.close();
+    }
+}
+
+7. 
 
 
-
-2task
+/////////////////////////////////////////////////////2task
 public class SQLQueryBuilderImpl implements SQLQueryBuilder{
   
         List<String> getTables() {
@@ -47,7 +104,7 @@ public class SQLQueryBuilderImpl implements SQLQueryBuilder{
    
 }
 
-3task
+/////////////////////////////////////////////////////3task
 /////////MessageFilter = component, ConnectionFactory,DataSource = component & dependencies
 public class MessageFilterTest {
   public static void main(String[] args) throws Exception {
