@@ -126,3 +126,61 @@ boolean tableExists(Connection connection, String tableName) throws SQLException
     return resultSet.next();
 }
 
+///////////////02.04.23эpublic class exp {
+    //проверка каждого слова полученного предложение на предмет
+    //полного совпадения с одним из слов из списка (без учета регистра).
+    //boolean b = s.equalsIgnoreCase(String anotherString)
+
+
+    //сравнение слова с бд
+    /*SELECT word
+    FROM swearWords
+    WHERE word LIKE 'моеСлово';*/
+
+
+    //деление предложения на слова и замена символов на *
+    public static void main(String[] args) {
+        System.out.println(blankWords("My!name.is,sam;orozco foot? hero "));
+    }
+
+    public static String delim = "*";
+
+    public static String blankWords(String s1) {        
+        StringBuilder response = new StringBuilder();//ответ
+        String[] parts = s1.split("(?<!^)\\b");
+        for (String part : parts) {
+            if (part.matches("\\w+")) {
+                //проверить слово
+                part = convertWord(part);
+                response.append(part);
+            }
+            else {
+                response.append(part);
+            }
+        }
+        return response.toString().trim();
+    }
+
+
+    public static String convertWord(String val) {
+        int len = val.length();
+        StringBuilder bldr = new StringBuilder();
+        int index = 0;
+        for (char ch : val.toCharArray()) {
+            if (index == 0 || index == len - 1) {
+                bldr.append(ch);
+            } else {
+                bldr.append(delim);
+            }
+            index++;
+        }
+        return bldr.toString();
+    }
+
+
+
+
+}
+
+
+
