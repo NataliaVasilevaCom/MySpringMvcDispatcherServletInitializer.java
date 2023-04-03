@@ -21,3 +21,17 @@ public static String blankWords(String s1) {
 ВАРИАНТ!!!!!!!!!
 String[] parts = s1.split("^[а-яА-Яa-zA-Z]"); или String[] parts = s1.split(" .,;?!");
 if (part.matches("[а-яА-Яa-zA-Z]")) - нет смысла в этом выражении
+
+
+
+
+
+
+
+
+
+
+
+
+VACUUM таблица;
+– очищает таблицу;
