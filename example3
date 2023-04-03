@@ -35,3 +35,25 @@ if (part.matches("[а-яА-Яa-zA-Z]")) - нет смысла в этом выр
 
 VACUUM таблица;
 – очищает таблицу;
+
+
+
+
+
+
+
+
+СМСМСМСМСМСМС eventsourcing создание таблицы!!!!!!!!!!!
+
+
+
+
+
+https://habr.com/ru/company/otus/blog/687004/    ObjectMapper
+https://www.baeldung.com/jackson-object-mapper-tutorial      ObjectMapper
+
+
+
+
+
+\n - это перенос строки
