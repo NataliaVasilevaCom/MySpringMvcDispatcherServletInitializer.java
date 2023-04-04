@@ -1,1 +1,6 @@
 ConnectionFactory connectionFactory = initMQ(); делаешь инициализация????
+
+VACUUM таблица;
+– очищает таблицу;
+
+СМСМСМСМСМСМС eventsourcing создание таблицы!!!!!!!!!!!
