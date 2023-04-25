@@ -17,5 +17,67 @@ get метод. Конструктор в классе Преподавател�
 название предмета у объекта-преподавателя. Затем, вызовите printInfo() на объектах и посмотрите на результат.
 */
 public class Human {
-
+  private String subjectName;
+  
+  public Human(String name) {
+    this.name = name;
+  }
+  
+  public String getName() {
+    return name;
+  }
+  
+  public void printInfo() {
+    System.out.println(“Этот человек с именем %s”, name);
+  }
 }
+
+public class Student extends Human {
+  private String groupName;
+
+  public Student(String name, String groupName) {
+    super(name);
+    this.groupName = groupName;
+  }  
+  
+  public String getGroupName() {
+    return groupName;
+  }
+  
+  @Override
+  public void printInfo() {
+    super.info();
+    System.out.println(“Этот студент с именем %s”, name);
+  }
+}
+
+public class Teacher extends Human {
+  private String groupName;
+
+  public Teacher(String name, String subjectName) {
+    super(name);
+    this.subjectName = subjectName;
+  }  
+  
+  public String getSubjectName() {
+    return subjectName;
+  }
+  
+  @Override
+  public void printInfo() {
+    super.info();
+    System.out.println(“Этот преподаватель с именем %s”, name);
+  }
+}
+
+
+
+
+Student student = Student("Полина", "Английская группа");
+Teacher teacher = Teacher("Юлия", "Английский язык");
+
+System.out.println(student.getGroupName());
+System.out.println(teacher.getSubjectName());
+
+student.printInfo();
+teacher.printInfo();
