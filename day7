@@ -10,8 +10,10 @@ public class Player {
     public static int countPlayers = 0;
 
     public Player(int stamina) {
-        this.stamina = stamina;
-        countPlayers++;
+        this.stamina = stamina;        
+        if (countPlayers<6) {
+            countPlayers++;
+        }
     }
 
     public int getStamina() {
@@ -29,16 +31,25 @@ public class Player {
         }
     }
 
-    public void info() {
+    public static void info() {
         System.out.println(countPlayers);
-        if (countPlayers < 6) {
-            System.out.printf("Команды неполные. На поле еще есть %d свободных мест", 6 - countPlayers);
+        if (countPlayers == 5) {
+            System.out.printf("Команды неполные. На поле еще есть 1 свободное место");
+        }
+        else if (countPlayers > 1 && countPlayers < 5) {
+            System.out.printf("Команды неполные. На поле еще есть %d свободных места", 6 - countPlayers);
+        }
+        else if (countPlayers == 1) {
+            System.out.printf("Команды неполные. На поле еще есть 5 свободных мест");
         }
         else {
             System.out.println("На поле нет свободных мест");
         }
     }
 }
+/*1 свободное место
+2-4 свободных места
+5 свободных мест*/
 //////////////////////////////////////////////////////task2
 package day7;
 
@@ -69,13 +80,22 @@ import java.util.Random;
 
 public class Task2 {
     public static void main(String[] args) {
-        for (int j = 0; j < 6; j++) {
-            Random random = new Random();
-            int stamina = random.nextInt(11) + 90;
-            Player player = new Player(stamina);
-            player.info();
-            player.run();
-        }
-
+        Player player1 = new Player(random.nextInt(11) + 90);
+        Player player2 = new Player(random.nextInt(11) + 90);
+        Player player3 = new Player(random.nextInt(11) + 90);
+        Player player4 = new Player(random.nextInt(11) + 90);
+        Player player5 = new Player(random.nextInt(11) + 90);
+        Player player6 = new Player(random.nextInt(11) + 90);
+        
+        Player.info();
+        
+        while(player6.getStamina()>0) {
+             player6.run();
+        }      
+        
+        Player.getCountPlayers();
+            
+        Player player7 = new Player(random.nextInt(11) + 90);
+        Player player8 = new Player(random.nextInt(11) + 90);
     }
 }
