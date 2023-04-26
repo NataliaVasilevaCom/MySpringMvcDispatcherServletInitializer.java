@@ -52,9 +52,53 @@ public class Warehouse {
   }
 }
 ///////////////////////////////////////////////////
-public class Picker {
+public class Picker implements Worker {
   private int salary; 
   private boolean isPayed;
+  private Warehouse warehouse;
+  
+  public Picker(int salary, boolean isPayed, Warehouse warehouse){
+    this.salary = salary;
+    this.isPayed = isPayed;
+    this.warehouse = warehouse;
+  }
+  
+  public int getSalary() {
+    return salary;
+  }
+  public boolean isPayed() {
+    return isPayed;
+  }
+  
+  public String toString() {
+    return "Заработная плата " + getSalary() + ", был ли выплачен бонус? " + isPayed();
+    
+    public void doWork() {
+      выплачивается заработная плата (сокр. ЗП) (80 — сборщику) 
+      countPickedOrders++;
+    }
+    
+    public int bonus() {
+      if(warehouse.getCountPickedOrders()==10000) {
+          return 70000;
+      }
+      else if (warehouse.getCountPickedOrders()!=10000) {
+        System.out.println(“Бонус пока не доступен”);
+      }
+    }
+  }
+}
+///////////////////////////////////////////////////
+public class Courier implements Worker {
+  private int salary; 
+  private boolean isPayed;
+  private Warehouse warehouse;
+  
+  public Courier(int salary, boolean isPayed, Warehouse warehouse){
+    this.salary = salary;
+    this.isPayed = isPayed;
+    this.warehouse = warehouse;
+  }
   
   public int getSalary() {
     return salary;
@@ -66,4 +110,53 @@ public class Picker {
   public String toString() {
     return "Заработная плата " + getSalary() + ", был ли выплачен бонус? " + isPayed();
   }
+  public void doWork() {
+      выплачивается заработная плата (сокр. ЗП) (100 — курьеру) 
+  }
+  public int bonus() {
+      if(warehouse.countDeliveredOrders()==10000) {
+          return 50000;
+      }
+      else if (warehouse.getCountPickedOrders()!=10000) {
+        System.out.println(“Бонус пока не доступен”);
+      }
+    }
 }
+///////////////////////////////////////////////////
+public interface Worker {
+  public void doWork();
+  public int bonus();
+}
+////////////////////////////////////////////////////////
+static void businessProcess(Worker worker) {
+  for(int i = 0; i < 10000; i++) {
+    doWork();
+  }
+  bonus();
+}
+//////////////////////////////
+Warehouse warehouse1 = new Warehouse();
+Picker picker1 = new Picker (int salary, false, warehouse1);
+Courier courier1 = new Courier (int salary, false, warehouse1);
+
+businessProcess(picker);
+businessProcess(courier);
+
+warehouse.getCountPickedOrders();
+warehouse.getCountDeliveredOrders();
+
+picker.getSalary();
+courier.getSalary();
+
+Warehouse warehouse2 = new Warehouse();
+Picker picker2 = new Picker (int salary, false, warehouse2);
+Courier courier2 = new Courier (int salary, false, warehouse2);
+picker2.doWork();
+courier2.doWork();
+
+warehouse1.toString();
+warehouse2.toString();
+picker1.toString();
+picker2.toString();
+courier1.toString();
+courier2.toString();
