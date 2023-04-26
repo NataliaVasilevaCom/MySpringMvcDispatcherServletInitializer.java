@@ -143,15 +143,93 @@ public abstract class Figure{
 
 public class Circle extends Figure {
   private double circleRadius;
+  
+  public Circle(double circleRadius, String color) {
+    super(color);
+    this.circleRadius = circleRadius;
+  }    
+    public double area() {
+      return Math.PI * Math.pow(circleRadius, 2);
+    }
+  
+    public double perimeter() {
+      return 2 * Math.PI * circleRadius;
+    }  
 }
 
 public class Rectangle extends Figure {
   private double height;
   private double width;
+  
+  public Rectangle(double height, double width, String color) {
+    super(color);
+    this.height = height;
+    this.width = width;
+  }
+  public double area() {
+      return height * width;
+  }
+  
+  public double perimeter() {
+      return (height + width) * 2;
+  }
 }
 
 public class Triangle extends Figure {
   private double length1;
   private double length2;
   private double length3;
+  
+  public Triangle(double length1, double length2, double length3, String color) {
+    super(color);
+    this.length1 = length1;
+    this.length2 = length2;
+    this.length3 = length3;
+  }  
+  public double area() {
+      double halfMeter = 0;
+      return Math.sqrt(halfMeter*(halfMeter-length1)*(halfMeter-length2)*(halfMeter-length3));
+  }
+  
+  public double perimeter() {
+      return length1 + length2 + length3;
+  }
+}
+
+
+public class TestFigures {
+  public static void main(String [] args) {
+    Figure[] figures = {
+        new Triangle(10, 10, 10, "Red"),
+        new Triangle(10, 20, 30, "Green"),
+        new Triangle(10, 20, 15, "Red"),
+        new Rectangle(5, 10, "Red"),
+        new Rectangle(40, 15, "Orange"),
+        new Circle(4, "Red"),
+        new Circle(10, "Red"),
+        new Circle(5, "Blue")
+    };   
+    System.out.println(calculateRedPerimeter(figures));
+    System.out.println(calculateRedArea(figures));
+  }  
+  
+    public static double calculateRedPerimeter(Figure[] figures) {
+      double redPerimeter = 0;
+      for(Figure figure : figures) {
+        if("Red".equals(figure.getColor())) {
+            redPerimeter += figure.perimeter();
+        }
+      }
+      return redPerimeter;
+    }
+    
+    public static double calculateRedArea(Figure[] figures){
+    double redArea = 0;
+      for(Figure figure : figures) {
+        if("Red".equals(figure.getColor())) {
+            redArea += figure.area();
+        }
+      }
+      return redArea;
+    }
 }
