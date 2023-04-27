@@ -1,0 +1,9 @@
+/**Создать список строк, добавить в него 5 марок автомобилей, вывести список в консоль. Добавить в середину еще 1 автомобиль, 
+удалить самый первый автомобиль из списка. Вывести список в консоль.*/
+List<String> list = new ArrayList<>();
+list.add("Kia");
+list.add("Toyota");
+list.add("Audi");
+list.add("Mazda");
+list.add("Reno");
+System.out.println(list);
