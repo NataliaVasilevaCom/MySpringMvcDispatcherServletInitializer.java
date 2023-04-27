@@ -175,7 +175,41 @@ public class Warrior extends Hero implements PhysAttack{
     this.health = 100;
     }
     
-    void physicalAttack(Hero hero);
+    public int getHealth() {
+      return health;
+    }
+    
+    public void setHealth(int damage) {
+      health -= damage;
+    }
+    
+    void physicalAttack(Hero hero) {
+      hero.setHealth();
+    }
+}
+
+public class Paladin extends Hero implements PhysAttack{
+  private int health;
+  private physDef; //процент поглощения физического урона
+  private magicDef; //процент поглощения магического урона
+  private physAtt; //величина физической атаки, по необходимости
+  private magicAtt; //величина магической атаки, по необходимости
+
+   public Paladin() {
+    this.health = 100;
+    }
+    
+    public int getHealth() {
+      return health;
+    }
+    
+    public void setHealth(int damage) {
+      health -= damage;
+    }
+    
+    void physicalAttack(Hero hero) {
+      hero.setHealth();
+    }
 }
 
 public interface PhysAttack{
