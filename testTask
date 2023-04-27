@@ -46,7 +46,7 @@ public class Main {
   public static String calc(String input) {
     Scanner scanner = new Scanner(System.in);
     
-    System.out.print("Введите арифметическое выражение типа a + b, a - b, a * b, a / b:");
+    System.out.print("Введите арифметическое выражение типа a + b, a - b, a * b, a / b: ");
     String input = scanner.nextLine();
         if (!Validator.isValidString(input)) {
           throws Exception;
