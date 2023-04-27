@@ -32,14 +32,27 @@ Input:
 Output:
 throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)
 ///////////////////////////////
+/**
+     * Main 
+     * 
+     */
 public class Main {
+/**
+     * Выполнение операции сложения, вычитания, умножения или деления двух чисел
+     *
+     * @param   input   Входящая строка с арифметическим выражением между двумя числами 
+     * @return  результат выполнения арифметического выражения
+     */
   public static String calc(String input) {
     Scanner scanner = new Scanner(System.in);
     
-    System.out.print("Введите арифметическое выражение типа a + b, a - b, a * b, a / b");
-    
+    System.out.print("Введите арифметическое выражение типа a + b, a - b, a * b, a / b:");
     String input = scanner.nextLine();
-    String[] parts = input.split(" ");
+        if (!Validator.isValidString(input)) {
+          throws Exception;
+              
+        } else {
+            String[] parts = input.split(" ");
     int a = Integer.parseInt(parts[0]);
     int b = Integer.parseInt(parts[2]);
     String action = parts[1];
@@ -58,7 +71,9 @@ public class Main {
      case "/":
         output = a / b;
         break;
-    }    
+    } 
+        }
+        
     
     scanner.close();
     System.out.println(output);
@@ -66,6 +81,10 @@ public class Main {
   }
 }
 /////////////////////
+/**
+     * Calculator 
+     * 
+     */
 class Calculator {
   public static void main(String[] args) {
     Main.calc("1 + 2");
@@ -75,14 +94,14 @@ class Calculator {
   }
 }
 //////////////
-public class Validator {
+class Validator {
     /**
      * Валидация входной строки 
      *
-     * @param   in  Входная строка для валидации
+     * @param   input  Входная строка для валидации
      * @return  Результат условия на состав входной строки
      */
-    public static boolean isValidNumber(String input) {
+    public static boolean isValidString(String input) {
         return input.matches("[1-10 ](\\*/-\\+ )[1-10]");        
     } 
 }
