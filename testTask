@@ -33,17 +33,56 @@ Output:
 throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)
 ///////////////////////////////
 public class Main {
-  public static void main(String[] args) {
-    calc("1 + 2");
-    calc("1");
-    calc("1 + 2 1");
-    calc("1 + 2 + 3");
-  }
-  
   public static String calc(String input) {
     Scanner scanner = new Scanner(System.in);
+    
+    System.out.print("Введите арифметическое выражение типа a + b, a - b, a * b, a / b");
+    
     String input = scanner.nextLine();
     String[] parts = input.split(" ");
-    String operator = parts[1];
+    int a = Integer.parseInt(parts[0]);
+    int b = Integer.parseInt(parts[2]);
+    String action = parts[1];
+    int output;
+    
+    switch(action) {
+      case "+":
+        output = a + b;
+        break;
+     case "-":
+        output = a - b;
+        break;
+     case "*":
+        output = a * b;
+        break;
+     case "/":
+        output = a / b;
+        break;
+    }    
+    
+    scanner.close();
+    System.out.println(output);
+    return String.valueOf(output);    
   }
+}
+/////////////////////
+class Calculator {
+  public static void main(String[] args) {
+    Main.calc("1 + 2");
+    Main.calc("1");
+    Main.calc("1 + 2 1");
+    Main.calc("1 + 2 + 3");
+  }
+}
+//////////////
+public class Validator {
+    /**
+     * Валидация входной строки 
+     *
+     * @param   in  Входная строка для валидации
+     * @return  Результат условия на состав входной строки
+     */
+    public static boolean isValidNumber(String input) {
+        return input.matches("[1-10 ](\\*/-\\+ )[1-10]");        
+    } 
 }
