@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////task1///////////////////////////
 /**Создать список строк, добавить в него 5 марок автомобилей, вывести список в консоль. Добавить в середину еще 1 автомобиль, 
 удалить самый первый автомобиль из списка. Вывести список в консоль.*/
 List<String> list = new ArrayList<>();
@@ -7,3 +8,64 @@ list.add("Audi");
 list.add("Mazda");
 list.add("Reno");
 System.out.println(list);
+
+list.set(2, "Mercedes");
+list.remove(0);
+System.out.println(list);
+///////////////////////////////////////////////////////////////task2///////////////////////////
+/**2. Создать новый список, заполнить его четными числами от 0 до 30 и от 300 до 350. 
+Для заполнения списка реализуйте метод, который принимает числа от, до, и ссылку на список. Вывести список.*/
+List<Integer> list = new ArrayList<>();
+for(int i = 0; i < 350; i++) {
+  if(i%0==0) {
+      list.add(i);
+  }
+}
+List<Integer> listNew1 = list.subList(0, 30);
+List<Integer> listNew2 = list.subList(300, 350);
+listNew1 = listNew1.addAll(listNew2);
+///////////////////////////////////////////////////////////////task3///////////////////////////
+/**Выполнять в подпапке task3 в day12* 
+Создать класс Музыкальная Группа (англ. MusicBand) с полями name и year (название музыкальной группы и год основания). Создать 10 или более экземпляров класса 
+MusicBand , добавить их в список (выбирайте такие музыкальные группы, которые были созданы как до 2000 года, так и после, жанр не важен). Перемешать список. 
+Создать статический метод в классе Task3:
+public static List<MusicBand> groupsAfter2000(List<MusicBand> bands)
+Этот метод принимает список групп в качестве аргумента и возвращает новый список, состоящий из групп, основанных после 2000 года. Вызвать метод 
+groupsAfter2000(List<MusicBand> bands) в методе main() на вашем списке из 10 групп. Вывести в консоль оба списка (оригинальный и с группами, 
+основанными после 2000 года).*/
+public class MusicBand{
+  private String name;
+  private int year;
+  
+  public MusicBand(String name, int year){
+    this.name=name;
+    this.year=year;
+  }
+  
+  MusicBand musicBand1 = new MusicBand("Kiss", 1973);
+  MusicBand musicBand2 = new MusicBand("Led Zeppelin", 1968);
+  MusicBand musicBand3 = new MusicBand("Queen", 1970);
+  MusicBand musicBand4 = new MusicBand("AC/DC", 1973);
+  MusicBand musicBand5 = new MusicBand("Metallica", 1981);
+  MusicBand musicBand6 = new MusicBand("Animal ДжаZ", 2000);
+  MusicBand musicBand7 = new MusicBand("Lady Gaga", 2009);
+  MusicBand musicBand8 = new MusicBand("Norah Jones", 2002);
+  MusicBand musicBand9 = new MusicBand("Rihanna", 2005);
+  MusicBand musicBand10 = new MusicBand("Maroon 5", 2002);
+  
+  List<String> list = new ArrayList<>();
+  list.add(musicBand1);
+  list.add(musicBand2);
+  list.add(musicBand3);
+  list.add(musicBand4);
+  list.add(musicBand5);
+  list.add(musicBand6);
+  list.add(musicBand7);
+  list.add(musicBand8);
+  list.add(musicBand9);
+  list.add(musicBand10);
+}
+
+
+
+
