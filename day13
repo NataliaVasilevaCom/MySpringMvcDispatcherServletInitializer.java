@@ -94,3 +94,57 @@ public class Message {
     return "FROM: " + sender + " TO: " + receiver + " ON: " + date + text";
   }
 }
+////////////////////////////////////////////
+public class MessageDatabase {
+  private static List<Message> messages = new ArraList<>();
+  
+  public static void addNewMessage(User u1, User u2, String text){
+    messages.add(new Message(u1, u2, text));
+  }
+  
+  public static List<Message> getMessages() {
+    return messages;
+  }
+  
+  public static void showDialog(User u1, User u2){ 
+    for (Message message : messages) {
+      if(message.getSender().equals(u1.getUsername()) && message.getReceiver().equals(u2.getUsername())) {
+        System.out.println(message.getText());
+      }
+    }
+    
+  }
+}
+/////////////////////////////////////main
+Затем необходимо:
+Отправить 2 сообщения от пользователя 1 пользователю 2
+Отправить 3 сообщения от пользователя 2 пользователю 1
+Отправить 3 сообщения от пользователя 3 пользователю 1
+Отправить 3 сообщения от пользователя 1 пользователю 3
+Отправить 1 сообщение от пользователя 3 пользователю 1
+
+Сообщения могут быть любыми.
+После этого, необходимо вывести диалог пользователя 1 и пользователя 3 с помощью метода showDialog().
+
+User u1 = new User("John");
+User u2 = new User("Peter");
+User u3 = new User("Poly");
+
+addNewMessage(u1, u2, "Привет!");
+addNewMessage(u1, u2, "Как у тебя дела?");
+
+addNewMessage(u2, u1, "Привет, u1!");
+addNewMessage(u2, u1, "Все ок, спасибо :)");
+addNewMessage(u2, u1, "А ты как?");
+
+addNewMessage(u3, u1, "Приветствую!");
+addNewMessage(u3, u1, "Приглашаем на праздник");
+addNewMessage(u3, u1, "Увидимся в июне!");
+
+addNewMessage(u1, u3, "Здравствуйте!");
+addNewMessage(u1, u3, "Спасибо за приглашение");
+addNewMessage(u1, u3, "Обязательно встретимся!");
+
+addNewMessage(u3, u1, "Адрес прежний");
+
+showDialog(u1, u3);
