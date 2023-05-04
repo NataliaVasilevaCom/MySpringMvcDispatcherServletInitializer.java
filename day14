@@ -21,3 +21,37 @@ catch (FileNotFoundException ex) {Некорректный входной фай
 }
 ////////////////////////////////////////////////////////
 people.txt
+Mike 24
+John 19
+Anna 20
+Miguel 5
+
+public static void  List<String> parseFileToStringList(File file)  {
+ArrayList<String> list = new List<>();
+  try (Scanner scaner = new Scanner(file)) {  
+  String line = null;
+  while(scanner.hasNextLine()) {
+    list.add(scanner.nextLine());
+  }
+  
+  for(String s : list) {
+  String[] arr = s.split(" ");
+    if(arr[00 < 0) {
+    System.out.println("Некорректный входной файл");
+    throw new Exception();
+  }
+  }
+  
+  System.out.println(list);
+}
+catch (FileNotFoundException ex) {Некорректный входной файл
+  System.out.println("Файл не найден");
+}  
+}
+/////////////////////////////////////////////////////
+public class Person{
+}
+
+public static void List<Person> parseFileToObjList(File file) {
+  
+}
