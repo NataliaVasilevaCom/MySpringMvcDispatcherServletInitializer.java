@@ -1,0 +1,17 @@
+src/main/resources/missing_shoes.txt
+//less36 reading
+File file = new File("src/main/resources/shoes.csv");
+
+
+public class WriteToFile {
+ public static void main(String[] args) {
+  File file = new File("missing_shoes");
+  
+  try (PrintWriter pw = new PrintWriter(file)) {
+    pw.println("");
+  }
+  catch() {
+  }
+ } 
+  
+}
