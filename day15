@@ -1,7 +1,62 @@
 src/main/resources/missing_shoes.txt
 //less36 reading
 File file = new File("src/main/resources/shoes.csv");
+ArrayList<Shoe> list = new List<>();
+  ArrayList<Shoe> moviesList = new ArrayList<>();
+        try (FileInputStream fileInputStream = new FileInputStream(file);
+             BufferedReader reader = new BufferedReader(new InputStreamReader((fileInputStream)))) {
+            reader.readLine();
+            String line;
+            int numberOfLines = 0;
+            while ((line = reader.readLine()) != null) {
+                numberOfLines++;
+                if (numberOfLines > 1) {
+                    String[] data = line.split(";");
+                    Shoe shoe = new Shoe();
+                    movie.setYear(parse(data[0]));
+                    movie.setLength(parse(data[1]));
+                    movie.setTitle((data[2]));
+                    movie.setSubject((data[3]));
+                    movie.setActors((data[4]));
+                    movie.setActress((data[5]));
+                    movie.setDirector((data[6]));
+                    movie.setPopularity(parse(data[7]));
+                    movie.setAwards(Boolean.valueOf((data[8])));
+                    moviesList.add(movie);
+                }
+            }
+   
+   
+   
+   
+   class Shoe {name size quantity   
+    private String title;
+    private Integer size;
+    private Integer quantity;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(Integer title) {
+        this.title = title;
+    }
+    
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(Integer title) {
+        this.title = title;
+    }
+    
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(Integer title) {
+        this.title = title;
+    }
 
 public class WriteToFile {
  public static void main(String[] args) {
