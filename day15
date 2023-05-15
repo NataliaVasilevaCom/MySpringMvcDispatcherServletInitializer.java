@@ -2,7 +2,7 @@ src/main/resources/missing_shoes.txt
 //less36 reading
 File file = new File("src/main/resources/shoes.csv");
 ArrayList<Shoe> list = new List<>();
-  ArrayList<Shoe> moviesList = new ArrayList<>();
+  ArrayList<Shoe> shoesList = new ArrayList<>();
         try (FileInputStream fileInputStream = new FileInputStream(file);
              BufferedReader reader = new BufferedReader(new InputStreamReader((fileInputStream)))) {
             reader.readLine();
@@ -12,51 +12,22 @@ ArrayList<Shoe> list = new List<>();
                 numberOfLines++;
                 if (numberOfLines > 1) {
                     String[] data = line.split(";");
-                    Shoe shoe = new Shoe();
-                    movie.setYear(parse(data[0]));
-                    movie.setLength(parse(data[1]));
-                    movie.setTitle((data[2]));
-                    movie.setSubject((data[3]));
-                    movie.setActors((data[4]));
-                    movie.setActress((data[5]));
-                    movie.setDirector((data[6]));
-                    movie.setPopularity(parse(data[7]));
-                    movie.setAwards(Boolean.valueOf((data[8])));
-                    moviesList.add(movie);
+                    Shoe shoe = new Shoe();                    
+                    shoe.setName((data[0]));
+                    shoe.setSize(parse(data[1]));
+                    shoe.setQuantity(parse(data[2]));
                 }
             }
    
    
    
    
-   class Shoe {name size quantity   
-    private String title;
+   class Shoe {
+    private String name;
     private Integer size;
     private Integer quantity;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(Integer title) {
-        this.title = title;
-    }
-    
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(Integer title) {
-        this.title = title;
-    }
-    
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(Integer title) {
-        this.title = title;
-    }
+    getter/setter
 
 public class WriteToFile {
  public static void main(String[] args) {
