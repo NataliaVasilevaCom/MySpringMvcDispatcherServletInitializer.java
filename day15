@@ -1,7 +1,6 @@
 src/main/resources/missing_shoes.txt
 //less36 reading
 File file = new File("src/main/resources/shoes.csv");
-ArrayList<Shoe> list = new List<>();
   ArrayList<Shoe> shoesList = new ArrayList<>();
         try (FileInputStream fileInputStream = new FileInputStream(file);
              BufferedReader reader = new BufferedReader(new InputStreamReader((fileInputStream)))) {
@@ -16,8 +15,11 @@ ArrayList<Shoe> list = new List<>();
                     shoe.setName((data[0]));
                     shoe.setSize(parse(data[1]));
                     shoe.setQuantity(parse(data[2]));
+                    shoesList.add(shoe);
                 }
             }
+            
+         }
    
    
    
