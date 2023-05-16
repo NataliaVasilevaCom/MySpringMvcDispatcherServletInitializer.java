@@ -36,7 +36,12 @@ public class WriteToFile {
   File file = new File("missing_shoes");
   
   try (PrintWriter pw = new PrintWriter(file)) {
-    pw.println("");
+  for(Shoe shoe : shoesList) {
+    if(shoe.getQuantity()==0) {
+      pw.println(shoe.getName() + ", " + shoe.getSize() + ", " + shoe.getQuantity());
+    }
+   }
+    
   }
   catch() {
   }
