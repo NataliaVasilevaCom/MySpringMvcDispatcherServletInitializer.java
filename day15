@@ -11,11 +11,14 @@ File file = new File("src/main/resources/shoes.csv");
                 numberOfLines++;
                 if (numberOfLines > 1) {
                     String[] data = line.split(";");
-                    Shoe shoe = new Shoe();                    
-                    shoe.setName((data[0]));
-                    shoe.setSize(parse(data[1]));
-                    shoe.setQuantity(parse(data[2]));
-                    shoesList.add(shoe);
+                    if(data.length==3) {
+                      Shoe shoe = new Shoe();                    
+                      shoe.setName((data[0]));
+                      shoe.setSize(parse(data[1]));
+                      shoe.setQuantity(parse(data[2]));
+                      shoesList.add(shoe);
+                    }
+                    
                 }
             }
             
@@ -43,8 +46,9 @@ public class WriteToFile {
    }
     
   }
-  catch() {
-  }
+  catch (FileNotFoundException ex) {//Некорректный входной файл
+  System.out.println("Файл не найден");
+} 
  } 
   
 }
