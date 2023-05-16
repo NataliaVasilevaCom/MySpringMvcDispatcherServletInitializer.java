@@ -1,1 +1,24 @@
-
+File file = new File("file.txt");
+  ArrayList<Shoe> shoesList = new ArrayList<>();
+        try (FileInputStream fileInputStream = new FileInputStream(file);
+             BufferedReader reader = new BufferedReader(new InputStreamReader((fileInputStream)))) {
+            reader.readLine();
+            String line;
+            int numberOfLines = 0;
+            while ((line = reader.readLine()) != null) {
+                numberOfLines++;
+                if (numberOfLines > 1) {
+                    String[] data = line.split(";");
+                    if(data.length==3) {
+                      Shoe shoe = new Shoe();                    
+                      shoe.setName((data[0]));
+                      shoe.setSize(parse(data[1]));
+                      shoe.setQuantity(parse(data[2]));
+                      shoesList.add(shoe);
+                    }
+                    
+                }
+            }
+            
+         }
+   
