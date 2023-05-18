@@ -23,3 +23,14 @@ for() {// 026134
 }
 
 }
+//////////
+for (int j = 0; j < 5; j++) {
+    int d = tepm%10; 
+    temp = tepm/10; 
+      if(j<3) {    
+       right += d;
+      }
+      else{
+        left += d;
+      }
+  }
