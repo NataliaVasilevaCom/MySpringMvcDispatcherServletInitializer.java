@@ -1,36 +1,25 @@
-public class LuckyTicket{
-psvm
-for() {// 026134
-  int left = 0;
-  int right = 0;
-  int tepm = i; //tepm = 026134
-  for (int j = 0; j < 3; j++) {
-    int d = tepm%10;// 1  
-    temp = tepm/10; // 026
-       right += d;//4+3+1=8
-  }
-  for (int k = 0; k < 2; k++) {
-    int d = tepm%10;// 2
-    temp = tepm/10; // 0
-       left += d;//6+2
-  }
-  left += tepm;
-  
-  if(left == right) {
-    sum++;
-  }
-  System.out.printf("Количество счастливых билетов%s", sum);
-}
+public class LuckyTicket {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 0; i < 1000000; i++) {
+            int leftSum = 0;
+            int rightSum = 0;
+            int temp = i;
+            for (int j = 0; j < 5; j++) {
+                int digit = temp % 10;
+                temp = temp / 10;
+                if (j < 3) {
+                    rightSum += digit;
+                } else {
+                    leftSum += digit;
+                }
+            }
+            leftSum += temp;
 
+            if (leftSum == rightSum) {
+                sum++;
+            }
+        }
+        System.out.printf("Количество счастливых билетов %s", sum);
+    }
 }
-//////////
-for (int j = 0; j < 5; j++) {
-    int d = tepm%10; 
-    temp = tepm/10; 
-      if(j<3) {    
-       right += d;
-      }
-      else{
-        left += d;
-      }
-  }
