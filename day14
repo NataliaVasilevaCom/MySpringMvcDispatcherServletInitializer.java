@@ -1,0 +1,89 @@
+test.txt
+4 7 8 3 6 4 9 2 1 5
+public static void printSumDigits(File file) throws Exception {
+try (Scanner scaner = new Scanner(file)) {  
+  String line = scanner.nextLine();
+  String[] stringNumbers = line.split(" ");
+  int sum = 0;
+  for(int i = 0; i < stringNumbers.length; i++) {
+    numbers[i] = Integer.parseInt(stringNumbers[i]);
+     sum += numbers[i];
+  }
+  if(stringNumbers.length != 10) {
+    System.out.println("Некорректный входной файл");
+    throw new Exception();
+  }
+  System.out.println(sum);
+}
+catch (FileNotFoundException ex) {Некорректный входной файл
+  System.out.println("Файл не найден");
+}  
+}
+////////////////////////////////////////////////////////
+people.txt
+Mike 24
+John 19
+Anna 20
+Miguel 5
+
+public static void  List<String> parseFileToStringList(File file)  {
+ArrayList<String> list = new List<>();
+  try (Scanner scaner = new Scanner(file)) {  
+  String line = null;
+  while(scanner.hasNextLine()) {
+    list.add(scanner.nextLine());
+  }
+  
+  for(String s : list) {
+  String[] arr = s.split(" ");
+    if(arr[00 < 0) {
+    System.out.println("Некорректный входной файл");
+    throw new Exception();
+  }
+  }
+  
+  System.out.println(list);
+}
+catch (FileNotFoundException ex) {Некорректный входной файл
+  System.out.println("Файл не найден");
+}  
+}
+/////////////////////////////////////////////////////
+public class Person{
+  String name;
+  int age;
+  
+  public Person(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  public String toString() {
+   return @Override;
+  }
+}
+
+public static void List<Person> parseFileToObjList(File file) {rrayList<String> list = new List<>();
+ArrayList<Person> list = new List<>();
+  try (Scanner scaner = new Scanner(file)) {  
+  String line = null;
+  while(scanner.hasNextLine()) {
+    list.add(scanner.nextLine());
+    String[] arr = s.split(" ");
+    list.add(new Person(arr[0], arr[1]));
+  }
+  
+  for(String s : list) {
+  String[] arr = s.split(" ");
+    if(arr[00 < 0) {
+    System.out.println("Некорректный входной файл");
+    throw new Exception();
+  }
+  }
+  
+  System.out.println(list);
+}
+catch (FileNotFoundException ex) {Некорректный входной файл
+  System.out.println("Файл не найден");
+}  
+}

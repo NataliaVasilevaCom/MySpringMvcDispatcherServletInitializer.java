@@ -1,0 +1,103 @@
+package day7;
+
+/**
+ * @author Natalia Vasileva
+ */
+public class Player {
+    private int stamina;
+    public static final int MAX_STAMINA = 100;
+    public static final int MIN_STAMINA = 0;
+    public static int countPlayers = 0;
+
+    public Player(int stamina) {
+        this.stamina = stamina;        
+        if (countPlayers<6) {
+            countPlayers++;
+        }
+    }
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public static int getCountPlayers() {
+        return countPlayers;
+    }
+
+    public void run() {
+        stamina--;
+        if (stamina == 0) {
+            countPlayers--;
+        }
+    }
+
+    public static void info() {
+        System.out.println(countPlayers);
+        if (countPlayers == 5) {
+            System.out.printf("Команды неполные. На поле еще есть 1 свободное место");
+        }
+        else if (countPlayers > 1 && countPlayers < 5) {
+            System.out.printf("Команды неполные. На поле еще есть %d свободных места", 6 - countPlayers);
+        }
+        else if (countPlayers == 1) {
+            System.out.printf("Команды неполные. На поле еще есть 5 свободных мест");
+        }
+        else {
+            System.out.println("На поле нет свободных мест");
+        }
+    }
+}
+/*1 свободное место
+2-4 свободных места
+5 свободных мест*/
+//////////////////////////////////////////////////////task2
+package day7;
+
+import java.util.Random;
+
+/**
+ * Дворовый футбол.
+ * Для игры в футбол во дворе требуется 6 человек (3х3). Класс Игрок (англ. Player) содержит следующие поля:
+ * Поле “выносливость” (англ. stamina), разное для каждого экземпляра, инициализируется через конструктор.
+ * Константы “максимальная выносливость” (англ. MAX_STAMINA) со значением 100 и “минимальная выносливость”
+ * (англ. MIN_STAMINA) со значением 0, единые для всех экземпляров.
+ * Статическое поле countPlayers, которое считает количество игроков на футбольном поле (изначально их 0,
+ * выходом на поле считается создание экземпляра класса, уходом - когда игрок устал).
+ * Геттеры для полей “выносливость” и “количество игроков” и следующие методы:
+ * run() - игрок бежит при вызове этого метода. Этот метод уменьшает выносливость игрока на 1 при однократном вызове.
+ * Когда выносливость достигает 0, игроку нужен отдых и он уходит с поля.
+ * info() -  выводит сообщение в зависимости от количества игроков на поле. Если игроков меньше 6, то выводит сообщение:
+ * “Команды неполные. На поле еще есть ... свободных мест”, иначе: “На поле нет свободных мест”.
+ * Грамматикой русского языка пренебречь, т.е. фраза “еще есть 1 свободных мест” допустима.
+ * Задание: Создать класс Player по вышеописанному шаблону. В методе main() создать объект класса Random, который
+ * будет генерировать случайные числа. Создать 6 игроков, передавая им в качестве аргумента в конструктор случайно
+ * сгенерированные числа от 90 до 100. Вызвать метод info(). При попытке создать 7,8 … n игрока, количество игроков
+ * на поле меняться не должно, проверить это.
+ * Примените к одному игроку метод run(), пока он полностью не выдохнется (отрицательное значение выносливости
+ * не допускается). Вывести количество игроков на поле.
+ * По желанию: доработать метод info() так, чтобы при выводе в консоль грамматика русского языка учитывалась.
+ */
+
+public class Task2 {
+    public static void main(String[] args) {
+        Player player1 = new Player(random.nextInt(11) + 90);
+        Player player2 = new Player(random.nextInt(11) + 90);
+        Player player3 = new Player(random.nextInt(11) + 90);
+        Player player4 = new Player(random.nextInt(11) + 90);
+        Player player5 = new Player(random.nextInt(11) + 90);
+        Player player6 = new Player(random.nextInt(11) + 90);
+        
+        Player.info();
+        
+        while(player6.getStamina()>0) {
+             player6.run();
+        }      
+        
+        Player.getCountPlayers();
+            
+        Player player7 = new Player(random.nextInt(11) + 90);
+        Player player8 = new Player(random.nextInt(11) + 90);
+        
+        Player.getCountPlayers();
+    }
+}

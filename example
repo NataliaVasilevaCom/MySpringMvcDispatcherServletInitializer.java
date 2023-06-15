@@ -1,0 +1,197 @@
+1. Maven/архетип webApp(для MVC)/
+
+2. Dependencies
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>5.1.4.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>5.1.4.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.1.4.RELEASE</version>
+    </dependency>
+
+3. Папка resources создается в main, помечается (mark directoty as) как resources root// файлы из папки будут доступны классам, здесь будет файл конфигурации applicationContext.xml
+4. Папка java помечается как sources root
+5. Типичные шаги в работе со Spring: 
+создаем java-классы, 
+создаем и связываем бины(xml, 
+аннотации или java код), 
+при использовании берем бины из контейнера
+
+6. public class TestBean {
+    private String name;
+
+    public TestBean(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+//класс тестирует Spring
+public class TestSpring {
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+                "applicationContext.xml"
+        );
+
+        TestBean testBean = context.getBean("testBean", TestBean.class);
+
+        System.out.println(testBean.getName());
+
+        context.close();
+    }
+}
+
+7. 
+
+
+/////////////////////////////////////////////////////2task
+public class SQLQueryBuilderImpl implements SQLQueryBuilder{
+  
+        List<String> getTables() {
+        //как мы можем извлечь имена всех существующих пользовательских таблиц:
+        //Здесь соединение является экземпляром JdbcConnection. 
+        DatabaseMetaData databaseMetaData = connection.getMetaData();
+        List<String> list = ArrayList<>();
+      try(ResultSet resultSet = databaseMetaData.getTables(null, null, null, new String[]{"TABLE"})){ 
+          while(resultSet.next()) { 
+                String tableName = resultSet.getString("TABLE_NAME"); 
+                list.add(tableName);
+          }
+          return list;
+     }
+      
+      String queryForTable(String tableName) {
+      //Мы также можем извлекать столбцы конкретной таблицы
+      StringBuilder sb = new StringBuilder();
+      if(tableExists(connection, tableName)) {
+        try(ResultSet columns = databaseMetaData.getColumns(null,null, "CUSTOMER_ADDRESS", null)){
+         while(columns.next()) {
+              String columnName = columns.getString("COLUMN_NAME");
+              sb = sb + ", " + columnName ", " + ;
+          }          
+       }
+      }
+      else {
+        return null;
+      }
+      
+      
+      //“SELECT <col1>, <col2>, <col3> FROM <tablename>” 
+      //SELECT id, first_name, last_name, middle_name FROM person
+
+      return "SELECT " + sb.toString() + " FROM " + person";
+    }
+   
+}
+
+/////////////////////////////////////////////////////3task
+/////////MessageFilter = component, ConnectionFactory,DataSource = component & dependencies
+public class MessageFilterTest {
+  public static void main(String[] args) throws Exception {
+    Scanner scanner = new Scanner(System.in);
+    MessageFilter messageFilter = getBean//??????
+    
+    System.out.print("Введите сообщение: ");
+    String message = scanner.next();
+    System.out.println(messageFilter.check(message));
+    scanner.close();
+  }
+}
+
+//Проверка, существует ли таблица с помощью DatabaseMetaData
+boolean tableExists(Connection connection, String tableName) throws SQLException {
+    DatabaseMetaData meta = connection.getMetaData();
+    ResultSet resultSet = meta.getTables(null, null, tableName.toUpperCase(), new String[] {"TABLE"});
+
+    return resultSet.next();
+}
+
+///////////////02.04.23эpublic class exp {
+    //проверка каждого слова полученного предложение на предмет
+    //полного совпадения с одним из слов из списка (без учета регистра).
+    //boolean b = s.equalsIgnoreCase(String anotherString)
+
+
+    //сравнение слова с бд
+    /*SELECT word
+    FROM swearWords
+    WHERE word LIKE 'моеСлово';*/
+
+
+    //деление предложения на слова и замена символов на *
+    public static void main(String[] args) {
+        System.out.println(blankWords("My!name.is,sam;orozco foot? hero "));
+    }
+
+    public static String delim = "*";
+
+    public static String blankWords(String s1) {        
+        StringBuilder response = new StringBuilder();//ответ
+        String[] parts = s1.split("(?<!^)\\b");
+        for (String part : parts) {
+            if (part.matches("\\w+")) {
+                //проверить слово
+                part = convertWord(part);
+                response.append(part);
+            }
+            else {
+                response.append(part);
+            }
+        }
+        return response.toString().trim();
+    }
+
+
+    public static String convertWord(String val) {
+        int len = val.length();
+        StringBuilder bldr = new StringBuilder();
+        int index = 0;
+        for (char ch : val.toCharArray()) {
+            if (index == 0 || index == len - 1) {
+                bldr.append(ch);
+            } else {
+                bldr.append(delim);
+            }
+            index++;
+        }
+        return bldr.toString();
+    }
+
+
+
+
+}
+
+
+
+
+
+
+@Component
+public class RabbitClient {
+    @Autowired
+    private ConnectionFactory connectionFactory;
+
+    private String queue;
+}
+

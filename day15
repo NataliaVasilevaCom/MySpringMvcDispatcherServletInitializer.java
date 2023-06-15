@@ -1,0 +1,54 @@
+src/main/resources/missing_shoes.txt
+//less36 reading
+File file = new File("src/main/resources/shoes.csv");
+  ArrayList<Shoe> shoesList = new ArrayList<>();
+        try (FileInputStream fileInputStream = new FileInputStream(file);
+             BufferedReader reader = new BufferedReader(new InputStreamReader((fileInputStream)))) {
+            reader.readLine();
+            String line;
+            int numberOfLines = 0;
+            while ((line = reader.readLine()) != null) {
+                numberOfLines++;
+                if (numberOfLines > 1) {
+                    String[] data = line.split(";");
+                    if(data.length==3) {
+                      Shoe shoe = new Shoe();                    
+                      shoe.setName((data[0]));
+                      shoe.setSize(parse(data[1]));
+                      shoe.setQuantity(parse(data[2]));
+                      shoesList.add(shoe);
+                    }
+                    
+                }
+            }
+            
+         }
+   
+   
+   
+   
+   class Shoe {
+    private String name;
+    private Integer size;
+    private Integer quantity;
+
+    getter/setter
+
+public class WriteToFile {
+ public static void main(String[] args) {
+  File file = new File("missing_shoes");
+  
+  try (PrintWriter pw = new PrintWriter(file)) {
+  for(Shoe shoe : shoesList) {
+    if(shoe.getQuantity()==0) {
+      pw.println(shoe.getName() + ", " + shoe.getSize() + ", " + shoe.getQuantity());
+    }
+   }
+    
+  }
+  catch (FileNotFoundException ex) {//Некорректный входной файл
+  System.out.println("Файл не найден");
+} 
+ } 
+  
+}
