@@ -13,10 +13,44 @@ double scale = Math.pow(10, 3);
 
   //////////////////////////////////////////
 
-  File file = new File("file1.txt"); 
-  File file = new File("file2.txt"); 
+  File file1 = new File("file1.txt"); 
+  File file2 = new File("file2.txt"); 
 
-for (int i = 0; i < 1000; i++)
+
+
+        
+        try (PrintWriter pw = new PrintWriter(file1)) {
+            for (int i = 0; i < 1000; i++)
      {
-       (Math.random() * 100) + 1;
+       pw.println((Math.random() * 100) + 1);
      }
+            pw.flush();
+        }
+
+try (FileInputStream fileInputStream = new FileInputStream(file1);
+              PrintWriter pw = new PrintWriter(file2);
+             BufferedReader reader = new BufferedReader(new InputStreamReader((fileInputStream)))) {
+            int sum = 0;
+while ((line = reader.readLine()) != null) {
+            for (int i = 0; i < 20; i++) {
+              sum += reader.nextInt();
+            }
+             double arithmeticMean = sum/20;
+             pw.println(arithmeticMean);
+            }
+}
+
+
+
+public static printResult(File file){
+  try (Scanner scaner = new Scanner(file2)) {  
+  String line = scanner.nextLine();
+  String[] stringNumbers = line.split(" ");
+  int sum = 0;
+  for(int i = 0; i < stringNumbers.length; i++) {
+    numbers[i] = Double.parseDouble(stringNumbers[i]);
+     sum += numbers[i];
+  }
+  double arithmeticMean = sum/stringNumbers.length;
+  sout Math.round(arithmeticMean);
+}
