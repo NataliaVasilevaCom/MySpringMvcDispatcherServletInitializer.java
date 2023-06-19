@@ -31,4 +31,7 @@ public enum ChessPiece {
 
 
 
-new ChessPiece[]{PAWN_WHITE, PAWN_WHITE, PAWN_WHITE, PAWN_WHITE, ROOK_BLACK, ROOK_BLACK, ROOK_BLACK, ROOK_BLACK};
+ChessPiece[] chessPiecies = new ChessPiece[]{PAWN_WHITE, PAWN_WHITE, PAWN_WHITE, PAWN_WHITE, ROOK_BLACK, ROOK_BLACK, ROOK_BLACK, ROOK_BLACK};
+for(ChessPiece chessPiece : chessPiecies) {
+  sout(chessPiece.toString());
+}
