@@ -8,6 +8,15 @@ File file = new File("file.txt");
      sum += numbers[i];
   }
   double arithmeticMean = sum/stringNumbers.length;
-  sout arithmeticMean;
-  sout arithmeticMean;
-   
+double scale = Math.pow(10, 3);
+  sout arithmeticMean + " --> " + Math.ceil(arithmeticMean * scale) / scale;
+
+  //////////////////////////////////////////
+
+  File file = new File("file1.txt"); 
+  File file = new File("file2.txt"); 
+
+for (int i = 0; i < 1000; i++)
+     {
+       (Math.random() * 100) + 1;
+     }
