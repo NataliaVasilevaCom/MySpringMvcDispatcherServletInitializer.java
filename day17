@@ -10,7 +10,7 @@ public enum ChessPiece {
   BISHOP_WHITE(3.5, "♗"), 
   BISHOP_BLACK(3.5, "♝"),
   KNIGHT_WHITE(3, "♘"), 
-  KNIGHT_BLACK(3, "♟"), 
+  KNIGHT_BLACK(3, "♞"), 
   PAWN_WHITE(1, "♙"), 
   PAWN_BLACK(1, "♟")
   
@@ -35,3 +35,4 @@ ChessPiece[] chessPiecies = new ChessPiece[]{PAWN_WHITE, PAWN_WHITE, PAWN_WHITE,
 for(ChessPiece chessPiece : chessPiecies) {
   sout(chessPiece.toString());
 }
+//////////////////////////////////////////////////
