@@ -12,7 +12,8 @@ public enum ChessPiece {
   KNIGHT_WHITE(3, "♘"), 
   KNIGHT_BLACK(3, "♞"), 
   PAWN_WHITE(1, "♙"), 
-  PAWN_BLACK(1, "♟")
+  PAWN_BLACK(1, "♟"),
+  EMPTY(-1, "_")
   
   private int value;
   private String designation;
@@ -36,3 +37,24 @@ for(ChessPiece chessPiece : chessPiecies) {
   sout(chessPiece.toString());
 }
 //////////////////////////////////////////////////
+
+public class ChessBoard{
+    private ChessPiece[][] chessPiecies;
+
+    ChessBoard(ChessPiece[][] chessPiecies) {
+      this.chessPiecies = chessPiecies;
+    }
+
+  public print() {
+    for (int i = 0; i < 8; i++) {  //идём по строкам
+            for (int j = 0; j < 8; j++) {//идём по столбцам
+                System.out.print(chessPiecies[i][j].toString()); //вывод элемента
+            }
+            System.out.println();//перенос строки ради визуального сохранения табличной формы
+        }
+  }
+}
+///////////////////
+MAIN
+ChessPiece[][] chessPiecies = {{18,28,18},{28,45,90},{45,3,14}};
+ChessBoard chessBoard = new ChessBoard(chessPiecies);
