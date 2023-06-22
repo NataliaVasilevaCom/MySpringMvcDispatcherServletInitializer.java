@@ -1,13 +1,13 @@
 /*https://javarush.com/groups/posts/2260-enum-prakticheskie-primerih-dobavlenie-konstruktorov-i-metodov
 public enum ChessPiece {
 ChessPiece[][] chessPiecies = {{ROOK_BLACK, EMPTY, EMPTY, EMPTY, EMPTY, ROOK_BLACK, KING_BLACK, EMPTY},
-                                {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, ROOK_BLACK, EMPTY, EMPTY},
-                                3{ROOK_BLACK, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, KING_BLACK, EMPTY},
+                                {EMPTY, ROOK_WHITE, EMPTY, EMPTY, PAWN_BLACK, PAWN_BLACK, EMPTY, PAWN_BLACK},
+                                3{PAWN_BLACK, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, PAWN_BLACK, EMPTY},
                                 4{ROOK_BLACK, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
                                 5{EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
                                6 {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, ROOK_BLACK, EMPTY, EMPTY},
                                7 {ROOK_BLACK, EMPTY, EMPTY, EMPTY, EMPTY, ROOK_BLACK, EMPTY, EMPTY},
-                               8 {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, ROOK_BLACK, KING_BLACK, EMPTY}};
+                               8 {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, ROOK_WHITE, KING_BLACK, EMPTY}};
   KING_WHITE(100, "♔"), 
   KING_BLACK(100, "♚"), 
   QUEEN_WHITE(9, "♕"), 
