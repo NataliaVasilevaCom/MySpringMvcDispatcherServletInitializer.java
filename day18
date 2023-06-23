@@ -26,7 +26,11 @@ System.out.println(recursionSum(...)); // 13
 
 public int recursionSum(int[] numbers) {
   int result = 0;
-  result = numbers[numbers.length-1] + recursionSum(Arrays.copyOf(numbers, numbers.length - 1));
+  int ind = numbers.length-1;
+    if(numbers.length==0) {
+        return result;
+    }
+  result = numbers[ind] + recursionSum(Arrays.copyOf(numbers, ind));
   return result;
 }
 
