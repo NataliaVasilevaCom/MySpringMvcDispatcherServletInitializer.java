@@ -34,4 +34,15 @@ public int recursionSum(int[] numbers) {
   return result;
 }
 
-
+/////////////////////////////////////////////task2
+System.out.println(count7(717771237)); // 5
+public int count7(int num) {
+  int result = 0;
+String s = "" + num;
+  int ind = numbers.length-1;
+    if(ind==0) {
+        return result;
+    }
+  result = numbers[ind] + recursionSum(Arrays.copyOf(numbers, ind));
+  return result;
+}
