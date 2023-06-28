@@ -37,12 +37,20 @@ public int recursionSum(int[] numbers) {
 /////////////////////////////////////////////task2
 System.out.println(count7(717771237)); // 5
 public int count7(int num) {
-  int result = 0;
-String s = "" + num;
-  int ind = numbers.length-1;charAt(int index)
+    String s = "" + num;
+    int ind = s.length()-1;
+    int result = 0;
     if(ind==0) {
-        return result;
+            return result;
     }
+    if(s.charAt(ind)=='7') {
+        result = 1 + count7(int num);
+    }
+    return result;
+  
+
+  
+    
   result = numbers[ind] + recursionSum(Arrays.copyOf(numbers, ind));
   return result;
 }
