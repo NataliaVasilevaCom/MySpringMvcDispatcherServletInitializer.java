@@ -38,13 +38,16 @@ public int recursionSum(int[] numbers) {
 System.out.println(count7(717771237)); // 5
 public int count7(int num) {
     String s = "" + num;
-    int ind = s.length()-1;
+    int ind = s.length()-1;//7
     int result = 0;
     if(ind==0) {
             return result;
     }
     if(s.charAt(ind)=='7') {
-        result = 1 + count7(int num);
+        result = 1 + count7((int) num / 10);//1+
+    }
+    else {
+        result = count7((int) num / 10);
     }
     return result;
   
