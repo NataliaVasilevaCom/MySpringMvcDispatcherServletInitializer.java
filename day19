@@ -1,0 +1,12 @@
+Map<String, Integer> words = new HashMap<>();
+Scanner scanner = new Scanner(text); // в text находится файл dushi.txt
+scanner.useDelimiter("[.,:;()?!\"\\s–]+");
+while (scanner.hasNext()) {
+  String word = scanner.next();
+    if(words.contains(word)) {
+      words.put(word, (+1));
+    }
+    else {
+    }
+    
+}
