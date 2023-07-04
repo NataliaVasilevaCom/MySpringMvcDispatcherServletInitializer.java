@@ -4,9 +4,13 @@ scanner.useDelimiter("[.,:;()?!\"\\s–]+");
 while (scanner.hasNext()) {
   String word = scanner.next();
     if(words.contains(word)) {
-      words.put(word, (+1));
+      words.put(word, (words.get(word)+1));
     }
     else {
-    }
-    
+      words.put(word, 1);
+    }    
 }
+words.entrySet().stream()
+   .sorted(Map.Entry.comparingByValue())
+   .forEach(System.out::println);
+///////////////////////////////////////////////////Task2
