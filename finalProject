@@ -12,38 +12,106 @@
 
 public class SeaFight {
 
-    private static final int[][] field1 = new int[10][10];    
+    private static final int[][] field1 = new int[10][10];
+    private static final int[][] field2 = new int[10][10];    
 
-    public static void main(String[] args) {
-        int number = createRandomNumber(MIN_NUMBER, MAX_NUMBER);
-        System.out.printf("Начнем расставлять корабли на поле Player1. Другой игрок, не смотри!\n
-                            Введи координаты четырехпалубного корабля (формат: х,у;х,у;х,у;х,у)\n");//3,4;4,4;5,4
+    public static void main(String[] args) {  
         try (Scanner scanner = new Scanner(System.in)) {
-            int count = 0;
-            boolean isNotGuessed = true;
-            while (isNotGuessed && count < MAX_ATTEMPTS) {//coordinates.length()=11
+               System.out.println("Начнем расставлять корабли на поле Player1. Другой игрок, не смотри!\n
+                            Введи координаты четырехпалубного корабля (формат: х,у;х,у;х,у;х,у)\n");//3,4;4,4;5,4
                 final String coordinates = scanner.next();
-                for(int i=0; i < coordinates.length(); i += 4) {//i=0   
-                 field1[coordinates.charAt(i+2)][coordinates.charAt(i)]=1; //field1[4][3]=1     
-                }
-                
-                if (guess == number) {
-                    System.out.println("Ты угадал с " + count + " попытки");
-                    isNotGuessed = false;
-                } else if (number < guess) {
-                    System.out.println("Мое число меньше! Осталось " + (MAX_ATTEMPTS - count) + " попыток");
-                } else {
-                    System.out.println("Мое число больше! Осталось " + (MAX_ATTEMPTS - count) + " попыток");
-                }
-            }
-            if (isNotGuessed) {
-                System.out.println("Ты не угадал.");
-            }
+                scan(coordinates, field1);                
+
+                System.out.println("Введи координаты первого трехпалубного корабля (формат: х,у;х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты второго трехпалубного корабля (формат: х,у;х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты первого двухпалубного корабля (формат: х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты второго двухпалубного корабля (формат: х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты третьего двухпалубного корабля (формат: х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты первого однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты второго однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты третьего однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+                System.out.println("Введи координаты четвертого однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field1);
+
+
+
+
+System.out.println("Начнем расставлять корабли на поле Player2. Другой игрок, не смотри!\n
+                            Введи координаты четырехпалубного корабля (формат: х,у;х,у;х,у;х,у)\n");//3,4;4,4;5,4
+                final String coordinates = scanner.next();
+                scan(coordinates, field2);                
+
+                System.out.println("Введи координаты первого трехпалубного корабля (формат: х,у;х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты второго трехпалубного корабля (формат: х,у;х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты первого двухпалубного корабля (формат: х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты второго двухпалубного корабля (формат: х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты третьего двухпалубного корабля (формат: х,у;х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты первого однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты второго однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты третьего однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
+
+                System.out.println("Введи координаты четвертого однопалубного корабля (формат: х,у)");
+                coordinates = scanner.next();
+                scan(coordinates, field2);
         }
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private static int createRandomNumber(int from, int toUpperBoundInclusive) {
-        return from + new Random().nextInt(toUpperBoundInclusive - from + 1);
+
+public static void scan(String coordinates, int[][] field1) {
+    for(int i=0; i < coordinates.length(); i += 4) {//i=0   
+                       field1[coordinates.charAt(i+2)][coordinates.charAt(i)]=1; //field1[4][3]=1     
     }
+}
+
+
+public class Ship{
+    Coordinate coordinates
 }
