@@ -17,14 +17,14 @@ public class SeaFight {
     public static void main(String[] args) {
         int number = createRandomNumber(MIN_NUMBER, MAX_NUMBER);
         System.out.printf("Начнем расставлять корабли на поле Player1. Другой игрок, не смотри!\n
-                            Введи координаты четырехпалубного корабля (формат: х,у;х,у;х,у;х,у)\n");//В,4
+                            Введи координаты четырехпалубного корабля (формат: х,у;х,у;х,у;х,у)\n");//3,4;4,4;5,4
         try (Scanner scanner = new Scanner(System.in)) {
             int count = 0;
             boolean isNotGuessed = true;
-            while (isNotGuessed && count < MAX_ATTEMPTS) {
+            while (isNotGuessed && count < MAX_ATTEMPTS) {//coordinates.length()=11
                 final String coordinates = scanner.next();
-                for(int i=0; i < coordinates.length(); i += 4) {
-                 field1[coordinates.charAt(i)][y]=1; 
+                for(int i=0; i < coordinates.length(); i += 4) {//i=0   
+                 field1[coordinates.charAt(i+2)][coordinates.charAt(i)]=1; //field1[4][3]=1     
                 }
                 
                 if (guess == number) {
