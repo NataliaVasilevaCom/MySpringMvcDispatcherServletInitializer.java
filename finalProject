@@ -112,6 +112,29 @@ public static void scan(String coordinates, int[][] field1) {
 }
 
 
-public class Ship{
-    Coordinate coordinates
+public abstract class Ship{
+    private Coordinate coordinate;
+}
+
+public class singleDeckShip exends Ship{   
+    public singleDeckShip(int x, int y) {
+        this.coordinate = new Coordinate(x, y);
+    }
+}
+
+public class twoDeckShip exends Ship{   //three four
+    public singleDeckShip(int x1, int y1, int x2, int y2) {
+        this.coordinate = new Coordinate(x, y);
+    }
+}
+
+
+public class Coordinate{
+    private int x;
+    private int y;
+
+    public Coordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
