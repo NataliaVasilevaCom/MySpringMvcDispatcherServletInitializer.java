@@ -115,7 +115,7 @@ public static void scan(String coordinates, int[][] field1) {
 public abstract class Ship{
     private String coordinates;
     
-    public singleDeckShip(String coordinates) {
+    public Ship(String coordinates) {
         this.coordinates = coordinates;
     }
 }
