@@ -64,7 +64,9 @@ public class SeaFight {
 System.out.println("Начнем расставлять корабли на поле Player2. Другой игрок, не смотри!\n
                             Введи координаты четырехпалубного корабля (формат: х,у;х,у;х,у;х,у)\n");//3,4;4,4;5,4
                 final String coordinates = scanner.next();
-                scan(coordinates, field2);                
+                if(coordinates.matches("d,d;d,d;d,d;d,d")) {
+                    scan(coordinates, field2);
+                }               
 
                 System.out.println("Введи координаты первого трехпалубного корабля (формат: х,у;х,у;х,у)");
                 coordinates = scanner.next();
@@ -72,7 +74,9 @@ System.out.println("Начнем расставлять корабли на по
 
                 System.out.println("Введи координаты второго трехпалубного корабля (формат: х,у;х,у;х,у)");
                 coordinates = scanner.next();
-                scan(coordinates, field2);
+                if(coordinates.matches("d,d;d,d;d,d")) {
+                    scan(coordinates, field2);
+                }
 
                 System.out.println("Введи координаты первого двухпалубного корабля (формат: х,у;х,у)");
                 coordinates = scanner.next();
@@ -84,7 +88,12 @@ System.out.println("Начнем расставлять корабли на по
 
                 System.out.println("Введи координаты третьего двухпалубного корабля (формат: х,у;х,у)");
                 coordinates = scanner.next();
-                scan(coordinates, field2);
+               
+                if(coordinates.matches("d,d;d,d") &&  
+(coordinates.charAt(0).equals(coordinates.charAt(4)) && Math.abs((int) coordinates.charAt(2)-(int) (coordinates.charAt(6))))==1)))) ||
+coordinates.charAt(2).equals(coordinates.charAt(6)) && Math.abs((int) coordinates.charAt(0)-(int) (coordinates.charAt(4))))==1))))){
+                    scan(coordinates, field2);
+                }
 
                 System.out.println("Введи координаты первого однопалубного корабля (формат: х,у)");
                 coordinates = scanner.next();
@@ -100,7 +109,10 @@ System.out.println("Начнем расставлять корабли на по
 
                 System.out.println("Введи координаты четвертого однопалубного корабля (формат: х,у)");
                 coordinates = scanner.next();
-                scan(coordinates, field2);
+                if(coordinates.matches("d,d")) {
+                    scan(coordinates, field2);
+                }
+                
         }
     }
 
